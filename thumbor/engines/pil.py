@@ -102,6 +102,9 @@ class Engine(BaseEngine):
 
         ext = extension or self.extension
 
+        if '?' in ext:
+            ext = ext[:ext.index('?')]
+
         options = {
             'quality': quality
         }
