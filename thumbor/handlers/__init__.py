@@ -9,7 +9,6 @@
 # Copyright (c) 2011 globo.com timehome@corp.globo.com
 
 import functools
-from os.path import splitext
 import datetime
 import traceback
 
@@ -22,7 +21,7 @@ from thumbor.context import Context
 from thumbor.transformer import Transformer
 from thumbor.engines import BaseEngine
 from thumbor.engines.json_engine import JSONEngine
-from thumbor.utils import logger
+from thumbor.utils import logger, url_safe_splitext
 import thumbor.filters
 
 CONTENT_TYPE = {
@@ -62,7 +61,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
         print 'Image to process: ', req.image_url
 
-        req.extension = splitext(req.image_url)[-1].lower()
+        req.extension = url_safe_splitext(req.image_url)[-1].lower()
 
         print 'Determined extension: ', req.extension
 
