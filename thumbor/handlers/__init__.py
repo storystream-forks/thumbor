@@ -59,11 +59,7 @@ class BaseHandler(tornado.web.RequestHandler):
         req = self.context.request
         conf = self.context.config
 
-        print 'Image to process: ', req.image_url
-
         req.extension = url_safe_splitext(req.image_url)[-1].lower()
-
-        print 'Determined extension: ', req.extension
 
         should_store = self.context.config.RESULT_STORAGE_STORES_UNSAFE or not self.context.request.unsafe
         if self.context.modules.result_storage and should_store:
