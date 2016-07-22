@@ -101,6 +101,7 @@ class Engine(BaseEngine):
         img_buffer = BytesIO()
 
         ext = extension or self.extension
+        print 'Proposed extension: ', ext
 
         if '?' in ext:
             ext = ext[:ext.index('?')]
